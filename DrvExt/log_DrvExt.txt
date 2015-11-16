@@ -1,0 +1,11 @@
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:206: warning: no previous prototype for 'i2c_read_block_data'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:219: warning: no previous prototype for 'i2c_read_byte_data'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:225: warning: no previous prototype for 'i2c_write_byte_data'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:229: warning: no previous prototype for 'mir3da_register_read'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:240: warning: no previous prototype for 'mir3da_register_write'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:251: warning: no previous prototype for 'mir3da_register_read_continuously'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/IOCfg.c:263: warning: no previous prototype for 'mir3da_register_mask_write'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/DxInput_Key.c:163: warning: 'VolDet_GetKey2Level' defined but not used
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/DxCamera_Sensor.c: In function 'DrvSensor_GetTab1st':
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/DxCamera_Sensor.c:60: warning: implicit declaration of function 'Sensor_GetDrvTab_OV2710'
+e:/SDK_1022_2014_V18_TAIZHI_MO_2710_SK01/DrvExt/DrvExt_src/ModelExt/WiFiCarDV/DxCamera_Sensor.c:60: warning: return makes pointer from integer without a cast

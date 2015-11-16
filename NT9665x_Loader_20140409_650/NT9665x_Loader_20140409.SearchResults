@@ -1,0 +1,44 @@
+---- FW Matches (44 in 3 files) ----
+Bl_func.c (project\model\src):    // Because there is some latency between FW do power off and HW
+Bl_func.c (project\model\src):    Check FW code.
+Bl_func.c (project\model\src):    Check FW code and file length.
+Bl_func.c (project\model\src):    The FW binary file must be post-proecessd by encrypt_bin.exe.
+Bl_func.c (project\model\src):    If FW checking is fail, the CPU will loop forever and LED is red.
+Bl_func.c (project\model\src):    @param[in] uiAddress    FW code in DRAM starting address
+Bl_func.c (project\model\src):    @param[in] uiFileLen    FW code length
+Bl_func.c (project\model\src):    @param[in] uiAddress    Scan FW code in DRAM starting address
+Bl_func.c (project\model\src):                // "Update FW" or "Run FW" function
+Bl_func.c (project\model\src):                //  Update FW has higher priority
+Bl_func.c (project\model\src):                // Run FW has lower priority
+Bl_func.c (project\model\src):                    if(INREG32(g_uiUpdateMainBinBufAddr + BININFO_FULLCOMPRESS_OFFSET) == COMPRESS_TAG_VALUE)   // Full compressed FW
+Bl_func.c (project\model\src):                        // g_uiUpdateMainBinBufAddr = SDRAM_Start_FW (0x8000_0000) + Comressed FW Len (length before compressed)
+Bl_func.c (project\model\src):    // Check FW read from SD card
+Bl_func.c (project\model\src):    // The FW binary file must be post-processed by encrypt_bin.exe
+Bl_func.c (project\model\src):        // Update FW
+Bl_func.c (project\model\src):            uart_putSystemUARTStr("\r\nUd FW\r\n");
+Bl_func.c (project\model\src):                // FW not full compressed (partial compressed OR not comporessed)
+Bl_func.c (project\model\src):                    uart_putSystemUARTStr("!!FW CODE SIZE > FLASH SIZE!!\r\n");
+Bl_func.c (project\model\src):                // FW is full compressed
+Bl_func.c (project\model\src):                uart_putSystemUARTStr("!!FW CODE SIZE > FLASH SIZE!!\r\n");
+Bl_func.c (project\model\src):            if(INREG32(SDRAM_Start_FW+BININFO_FULLCOMPRESS_OFFSET) != COMPRESS_TAG_VALUE)   // FW NOT full compressed
+Bl_func.c (project\model\src):            else    // FW full compressed
+Bl_func.c (project\model\src):            // Read partial loading flag in FW binary file
+Bl_func.c (project\model\src):    // Run FW
+Bl_func.c (project\model\src):        if(INREG32(g_uiUpdateMainBinBufAddr + BININFO_FULLCOMPRESS_OFFSET) != COMPRESS_TAG_VALUE) // FW is NOT fully compressed
+Bl_func.c (project\model\src):                // Copy to DRAM FW starting address (already at SDRAM_Start_FW, skip copy)
+Bl_func.c (project\model\src):                // Copy to DRAM FW starting address (already at SDRAM_Start_FW, skip copy)
+Bl_func.c (project\model\src):        // Copy to DRAM FW starting address
+Bl_func.h (project\model\src):// FW checking method, support checksum & CRC now
+Bl_func.h (project\model\src):   FW Code Size definiton (Defined in MakeConfig.txt)
+Bl_func.h (project\model\src):// FW_CODE_SIZE Definition ==> FW Maximun binary size storage in NAND
+Bl_func.h (project\model\src):#define SDRAM_Start_FW              0x80000000  // DRAM FW starting address
+Bl_func.h (project\model\src):#define SRAM_Start_FW               0xB07F0000  // SRAM FW starting address
+Bl_func.h (project\model\src):// CAL FW size exit tag
+Bl_func.h (project\model\src):// FW size exit tag
+Bl_func.h (project\model\src):// Reserved area FW size offset
+Bl_func.h (project\model\src):// Reserved area FW size tag offset
+Bl_func.h (project\model\src):#define FUNC_UPDATE_FW              0x01        // Read FW code from card and update to NAND and run
+Bl_func.h (project\model\src):#define FUNC_RUN_CARD               0x04        // Read FW code from card and run
+Bl_func.h (project\model\src):#define FUNC_RUN_FLASH              0x08        // Read FW code from internal flash and run
+Bl_func.h (project\model\src)://#NT#Check if FW size > EXEC base address
+StorageDef.h (include):#define     NAND_RW_FIRMWARE             2      ///< Update Region is FW (Update size is variable)

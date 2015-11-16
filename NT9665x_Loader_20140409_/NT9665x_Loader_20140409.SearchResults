@@ -1,0 +1,37 @@
+---- CHIP Matches (36 in 3 files) ----
+MakeCommon.txt (makecommon):#$(info CHIP = $(CHIP))
+MakeConfig.txt (project\model):# (If host IC is NT96656, just set CHIP as 650)
+MakeConfig.txt (project\model):#CHIP = 650
+MakeConfig.txt (project\model):CHIP = 655
+MakeConfig.txt (project\model):ifeq "$(CHIP)" "650"
+MakeConfig.txt (project\model):ifeq "$(CHIP)" "655"
+MakeConfig.txt (project\model):ifeq "$(CHIP)" "655"
+MakeConfig.txt (project\model):BIN_NAME = LD96$(CHIP)A
+MakeConfig.txt (project\model):TMP_NAME = LD96$(CHIP)1
+MakeConfig.txt (project\model):BL_START = "Loader NT96$(CHIP) Start ..."
+MakeConfig.txt (project\model):BL_UPDATE_FWNAME = FW96$(CHIP)A.BIN
+MakeConfig.txt (project\model):BL_UPDATE_CALNAME = FW96$(CHIP)C.BIN
+MakeConfig.txt (project\model):BL_RUN_FWNAME = FW96$(CHIP)T.BIN
+MakeConfig.txt (project\model):MODEL = "$(CHIP)$(CHIP_VER)_$(DRAM_TYPE)_$(DMA_CLOCK)_$(SDRAM_SIZE)Mb"
+MakeConfig.txt (project\model):  ifeq "$(CHIP)" "655"
+OutputImg.txt (makecommon):LIB_BOOT_R              := $(wildcard $(LIB_BASE_DIR_R)/Boot$(CHIP)$(CPUFREQ).a)
+OutputImg.txt (makecommon):	&& $(LD) -o $@ $(ALL_OBJ_R) $(LIB_R) $(LIB_RESET_R)"(configram$(CHIP)$(RESETFLAG).o)" -info totals -entry reset$(CHIP).o -map -symbols -scatter $(SCATTER) -list $(MAP_R) -info sizes -keep configram$(CHIP)$(RESETFLAG).o $(LOG_OPTION)
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP).... ->$(PHY_ANALOG_BLK)\
+OutputImg.txt (makecommon):	&& $(EBIN) $(TMPCOMPRESSED_R) $@ $(CHIP)
+OutputImg.txt (makecommon):	$(CFGRAM) $@ ../../Tools/ConfigRam/$(CHIP)_$(CHIP_VER)_$(DMA_CLOCK)_$(SDRAM_SIZE)$(DDR_FILE_STR).ini 650 $(LOADER_VERSION) $(CONFIG_RAM_GUI_EN) $(PHY_ANALOG_HV) $(DUTY_CALIBRATION) $(DUTY_CALIBRATION_LOG) $(DUTY_CALIBRATION_TYPE) $(LV1_CLK)
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP)... \
+OutputImg.txt (makecommon):	&& $(EBIN) $(TMP_R) $@ $(CHIP)
+OutputImg.txt (makecommon):	$(CFGRAM) $@ ../../Tools/ConfigRam/$(CHIP)_$(CHIP_VER)_$(DMA_CLOCK)_$(SDRAM_SIZE)$(DDR_FILE_STR).ini 650 $(LOADER_VERSION) $(CONFIG_RAM_GUI_EN) $(PHY_ANALOG_HV) $(DUTY_CALIBRATION) $(DUTY_CALIBRATION_LOG) $(DUTY_CALIBRATION_TYPE) $(LV1_CLK)
+OutputImg.txt (makecommon):	&& cat $(SCATTER_R) | sed s/"^.*LOADER_SUPPORT_NAND_1\*\/"/"\ \ \ \ \ \ \ \ \KEEP(\ Loader$(CHIP)_Data\/Release\/ObjectCode\/nand_tbl_$(_LOADER_NAND_SUPPORT_NAND_1st_).o(.data*))\ \/\*LOADER_SUPPORT_NAND_1\*\/"/ > $(SCATTER_R)_tmp \
+OutputImg.txt (makecommon):	&& cat $(SCATTER_R) | sed s/"^.*LOADER_SUPPORT_NAND_2\*\/"/"\ \ \ \ \ \ \ \ \KEEP(\ Loader$(CHIP)_Data\/Release\/ObjectCode\/nand_tbl_$(_LOADER_NAND_SUPPORT_NAND_2nd_).o(.data*))\ \/\*LOADER_SUPPORT_NAND_2\*\/"/ > $(SCATTER_R)_tmp \
+OutputImg.txt (makecommon):  	&& cat $(SCATTER_R) | sed s/"^.*LOADER_SUPPORT_NAND_3\*\/"/"\ \ \ \ \ \ \ \ \KEEP(\ Loader$(CHIP)_Data\/Release\/ObjectCode\/nand_tbl_$(_LOADER_NAND_SUPPORT_NAND_3rd_).o(.data*))\ \/\*LOADER_SUPPORT_NAND_3\*\/"/ > $(SCATTER_R)_tmp \
+OutputImg.txt (makecommon):	&& cat $(SCATTER_R) | sed s/"^.*INTERNAL_STORAGE_VERSION\*\/"/"\ \ \ \ \ \ \ \ \KEEP(\ Loader$(CHIP)_Data\/Release\/ObjectCode\/nand_tbl_version.o(.data*))\ \/\*INTERNAL_STORAGE_VERSION\*\/"/ > $(SCATTER_R)_tmp \
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP)...\
+OutputImg.txt (makecommon):	$(CFGRAM) $@ ../../Tools/ConfigRam/$(CHIP)_$(CHIP_VER)_$(DMA_CLOCK)_$(SDRAM_SIZE)$(DDR_FILE_STR).ini 650 $(LOADER_VERSION) $(CONFIG_RAM_GUI_EN) $(PHY_ANALOG_HV) $(DUTY_CALIBRATION) $(DUTY_CALIBRATION_LOG) $(DUTY_CALIBRATION_TYPE) $(LV1_CLK)
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP)...\
+OutputImg.txt (makecommon):    && $(EBIN) $(TMP_R) $@ $(CHIP)
+OutputImg.txt (makecommon):	&& cat $(SCATTER_R) | sed s/"^.*INTERNAL_STORAGE_VERSION\*\/"/"\ \ \ \ \ \ \ \ \KEEP(\ Loader$(CHIP)_Data\/Release\/ObjectCode\/nand_tbl_version.o(.data*))\ \/\*INTERNAL_STORAGE_VERSION\*\/"/ > $(SCATTER_R)_tmp \
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP)... $(CHIP_VER) $(DMA_CLOCK) $(SDRAM_SIZE) $(LOADER_VERSION) $(CONFIG_RAM_GUI_EN) $(PHY_ANALOG_HV) $(DUTY_CALIBRATION) $(DUTY_CALIBRATION_LOG) $(DUTY_CALIBRATION_TYPE)\
+OutputImg.txt (makecommon):	$(CFGRAM) $@ ../../Tools/ConfigRam/$(CHIP)_$(CHIP_VER)_$(DMA_CLOCK)_$(SDRAM_SIZE)$(DDR_FILE_STR).ini 650 $(LOADER_VERSION) $(CONFIG_RAM_GUI_EN) $(PHY_ANALOG_HV) $(DUTY_CALIBRATION) $(DUTY_CALIBRATION_LOG) $(DUTY_CALIBRATION_TYPE) $(LV1_CLK)
+OutputImg.txt (makecommon):	@echo Encrypt binary file $@ for $(CHIP)...\
+OutputImg.txt (makecommon):    && $(EBIN) $(TMP_R) $@ $(CHIP)
